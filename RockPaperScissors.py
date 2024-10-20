@@ -1,6 +1,5 @@
 import random
 
-
 rock = '''
     _______
 ---'   ____)
@@ -30,43 +29,41 @@ scissors = '''
 
 choices = [rock, paper, scissors]
 
-
 player_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper, and 2 for Scissors.\n"))
 computer_choice = random.choice(choices)
-
 
 print(player_choice)
 
 if player_choice == 0:
     print(rock)
     if computer_choice == rock:
-        print(rock)
+        print(f"Computer chose: {computer_choice} ")
         print("It's a tie!")
     if computer_choice == paper:
-        print(paper)
+        print(f"Computer chose: {computer_choice} ")
         print("Paper covers rock, you lose.")
     if computer_choice == scissors:
-        print(scissors)
+        print(f"Computer chose: {computer_choice} ")
         print("Rock smashes scissors, you win!")
 elif player_choice == 1:
     print(paper)
     if computer_choice == rock:
-        print(rock)
+        print(f"Computer chose: {computer_choice} ")
         print("Paper covers rock, you win!")
     if computer_choice == paper:
-        print(paper)
+        print(f"Computer chose: {computer_choice} ")
         print("It's a tie!")
     if computer_choice == scissors:
-        print(scissors)
+        print(f"Computer chose: {computer_choice} ")
+
         print("Rock smashes scissors, you win!")
 elif player_choice == 2:
     print(scissors)
     if computer_choice == rock:
-        print(rock)
+        print(f"Computer chose: {computer_choice} ")
         print("Rock smashes scissors, you lose.")
     if computer_choice == paper:
-        print(paper)
+        print(f"Computer chose: {computer_choice} ")
         print("Scissors cut paper, you win!")
     if computer_choice == scissors:
-        print(scissors)
-        print("It's a tie!")
+        print(f"Computer chose: {computer_choice} ")
