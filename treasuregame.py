@@ -22,20 +22,20 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 ''')
 print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
-direction = input("You come to a fork in the road, which direction do you choose, East, or West?\n")
-if "West" != direction != "west":
+direction = input("You come to a fork in the road, which direction do you choose, East, or West?\n").lower()
+if direction == "east":
     print("You are eaten by a dragon!")
     quit()
 else:
     print("You Follow the path to the West")
-canyon = input("You come to a valley with a small bridge across, and a winding path down, do you take The Bridge, or The Path\n")
-if canyon == "The Bridge" or canyon == "the bridge" or canyon == "the Bridge" or canyon == "The bridge":
+canyon = input("You come to a valley with a small bridge across, and a winding path down, do you take The Bridge, or The Path\n").lower()
+if canyon == "the bridge":
     print("You make it safely across the valley and continue on your journey!")
 else:
     print("The path down the valley wall is riddled with snakes, your suffer a horrible death!")
     quit()
-battle = input("You arrive at an arena with a warrior awaiting you, he offers you a choice of weapon: Sword, Staff, or Bow\n")
-if battle == "Bow" or battle == "bow":
+battle = input("You arrive at an arena with a warrior awaiting you, he offers you a choice of weapon: Sword, Staff, or Bow\n").lower()
+if battle == "bow":
     print("You grab the bow and fire a shot through his head!\nYou live and gain the treasure!\nCongratulations!")
 else:
     print("As your grab your weapon he lops off your head!\nYou are Dead.")
