@@ -42,19 +42,26 @@ def get_yes_no():
 
 
 def victory_loss():
-    if player_score or npc_score >= 21:
-        if player_score >= 21:
+    if player_score > 21 or npc_score > 21:
+        if player_score > 21:
+            if any(item in player_hand for item in cards[0]):
+                
             print(f"Your final hand: {player_hand}, final score: {player_score}")
             print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
             print("The Computer wins.")
+            play_a_game = "no"
         else:
             print(f"Your final hand: {player_hand}, final score: {player_score}")
             print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
             print("You win!")
-    elif player_score and npc_score == 21:
+    elif player_score == 21 and npc_score == 21:
         print(f"Your final hand: {player_hand}, final score: {player_score}")
         print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
         print("It's a tie, the computer wins.")
+    elif player_score < 21and npc_score == 21:
+        print(f"Your final hand: {player_hand}, final score: {player_score}")
+        print(f"Computer's final hand: {npc_hand},  final score: {npc_score}")
+        print("The computer wins.")
     elif player_score == 21 and npc_score <= 21:
         print(f"Your final hand: {player_hand}, final score: {player_score}")
         print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
