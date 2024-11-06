@@ -70,6 +70,29 @@ def hit_or_pass():
     else:
         hit = input("Type 'y' to hit, type 'n' to pass.")
 
+
+
+##function to define & test victory conditions
+def victory_loss():
+    if player_score == 0 or npc_score == 0:
+        if npc_score == 0:
+            winner = "npc"
+        elif player_score == 0 and npc_score == 0:
+            winner = "npc"
+        else:
+            winner = "player"
+    elif player_score > 21 or npc_score >21:
+        if npc_score > 21:
+            winner = "player"
+        else:
+            winner = "npc"
+    else:
+        hit_or_pass()
+
+
+
+
+
 ####################################################_Code Start_########################################################
 
 
@@ -98,42 +121,11 @@ while play_a_game == "yes":
     npc_hand.append(deal_card(2))
 
 
-    ##calculate current scores
-    player_score = calculate_score(player_hand)
-    npc_score = calculate_score(npc_hand)
-    if player_score == 0 or npc_score == 0:
-        if player_score == 0:
-            print(f"Your final hand: {player_hand}, final score: {player_score}")
-            print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
-            print("You Win!")
-        else:
-            print(f"Your final hand: {player_hand}, final score: {player_score}")
-            print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
-            print("The computer wins.")
-    elif player_score > 21 or npc_score > 21:
-        if player_score > 21:
-            print(f"Your final hand: {player_hand}, final score: {player_score}")
-            print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
-            print("The computer wins.")
-        else:
-            print(f"Your final hand: {player_hand}, final score: {player_score}")
-            print(f"Computer's final hand: {npc_hand}, final score: {npc_score}")
-            print("You Win!")
-    else:
-        print(f"Your Cards: {player_hand}, current score: {player_score}")
-        print(f"Computer's 1st card: {npc_hand[0]}")
+    ##calculate initial scores & update
+    player_score += calculate_score(player_hand)
+    npc_score += calculate_score(npc_hand)
 
 
     ##print current hands, and the player score
 
 
-
-    ##play on, or tally score, based on input
-    if hit == 'y':
-        # add additional cards to the player hands
-        player_hand += deal_card(1)
-        npc_hand += deal_card(1)
-    else:
-        print(f"Your final hand: {player_hand}, current score: {player_score}")
-        print(f"Computer's final hand: {npc_hand}")
-        print(f"")
