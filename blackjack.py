@@ -17,24 +17,6 @@ cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 
 
-##functions for mathematical operations
-def add(n1, n2):
-    return n1 + n2
-
-
-def subtract(n1, n2):
-    return n1 - n2
-
-
-def multiply(n1, n2):
-    return n1 * n2
-
-
-def divide(n1, n2):
-    return n1 / n2
-
-
-
 ##function to deal a card
 def deal_card(number_of_cards):
     return random.sample(cards, number_of_cards)
@@ -52,42 +34,46 @@ def get_yes_no():
 
 
 
-##function to calculate current total of all cards in list
-def calculate_score(list):
-    score = sum(list())
-    if score == 21:
+# Function to calculate the current total score
+def calculate_score(hand):
+    score = sum(hand)
+    if score == 21 and len(hand) == 2:  # Blackjack condition
         return 0
-    else:
-        return score
+    if 11 in hand and score > 21:
+        hand[hand.index(11)] = 1  # Adjust ace from 11 to 1 if score is over 21
+        score = sum(hand)
+    return score
 
 
 
 ##function to ask for hit or pass
 def hit_or_pass():
-    hit = input("Type 'y' to hit, type 'n' to pass.")
-    if hit in ["y", "n"]:
-        return hit
-    else:
-        hit = input("Type 'y' to hit, type 'n' to pass.")
-
-
-
-##function to define & test victory conditions
-def victory_loss():
-    if player_score == 0 or npc_score == 0:
-        if npc_score == 0:
-            winner = "npc"
-        elif player_score == 0 and npc_score == 0:
-            winner = "npc"
+    while True:
+        choice = input("Type 'y' to hit, type 'n' to pass: ").strip().lower()
+        if choice in ["y", "n"]:
+            return choice
         else:
-            winner = "player"
-    elif player_score > 21 or npc_score >21:
-        if npc_score > 21:
-            winner = "player"
-        else:
-            winner = "npc"
+            print("Invalid input. Please try again.")
+
+
+
+
+# Function to determine the game outcome
+def victory_loss(player_score, npc_score):
+    if player_score == 0:
+        return "Blackjack! You win!"
+    elif npc_score == 0:
+        return "Computer got Blackjack. You lose!"
+    elif player_score > 21:
+        return "You went over 21. You lose!"
+    elif npc_score > 21:
+        return "Computer went over 21. You win!"
+    elif player_score > npc_score:
+        return "You win!"
+    elif npc_score > player_score:
+        return "You lose!"
     else:
-        hit_or_pass()
+        return "It's a draw!"
 
 
 
@@ -108,24 +94,41 @@ while play_a_game == "yes":
     print(art.logo)
 
 
-    ##set/refresh internal variables
-    player_hand = []
-    npc_hand = []
-    player_score = 0
-    npc_score = 0
-    winner = ""
+    ##begin game
+    player_hand = deal_card(2)
+    npc_hand = deal_card(2)
+    player_score = calculate_score(player_hand)
+    npc_score = calculate_score(npc_hand)
+
+    ##Report initial hands and player score
+    print(f"Your first hand: {player_hand}, Your score: {player_score}")
+    print(f"Computer's first card: {npc_hand[0]}")
 
 
-    ##deal first hand
-    player_hand.append(deal_card(2))
-    npc_hand.append(deal_card(2))
+    ##Player's turn
+    while player_score != 0 and player_score < 21:
+        hit = hit_or_pass()
+        if hit == "y":
+            player_hand.extend(deal_card(1))
+            player_score = calculate_score(player_hand)
+            npc_score = calculate_score(npc_hand)
+            print(f"Your hand: {player_hand}, Your score: {player_score}")
+            print(f"Computer's first card: {npc_hand[0]}")
+            if player_score > 21:
+                print("You went over, You lose!")
+                break
+        else:
+            break
+
+    ##NPC's Turn
+    if player_score <= 21:
+        while npc_score <17:
+            npc_hand.extend(deal_card(1))
+            npc_score = calculate_score(npc_hand)
+
+        print(f"Computer's Final Hand: {npc_hand}, Computer's final score: {npc_score}")
+        print(victory_loss(player_score, npc_score))
 
 
-    ##calculate initial scores & update
-    player_score += calculate_score(player_hand)
-    npc_score += calculate_score(npc_hand)
-
-
-    ##print current hands, and the player score
-
-
+    ##Ask player to play again
+    play_a_game = get_yes_no()
