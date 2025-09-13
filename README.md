@@ -61,6 +61,9 @@ Check individual project directories for specific status information.
 
 - **GitHub**: [sunbrolynk](https://github.com/sunbrolynk)
 - **Issues**: Feel free to open issues for bugs, questions, or suggestions
+- Boot.dev - <p align="left">
+  <img src="https://api.boot.dev/v1/users/public/77b90cd3-6450-4d96-bc2c-dceedb8e8d4b/thumbnail" >
+</p>
 
 ## 📄 License
 
