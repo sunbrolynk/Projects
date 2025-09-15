@@ -34,6 +34,8 @@ Utility scripts and automation tools
 
 ### Learning Projects
 Educational implementations and tutorial follow-alongs
+ - [Webflyx](https://github.com/sunbrolynk/webflyx)
+ - [BookBot](https://github.com/sunbrolynk/bookbot)
 
 ### Experimental
 Proof-of-concepts and technology exploration
