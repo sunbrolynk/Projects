@@ -59,7 +59,7 @@ Check individual project directories for specific status information.
 
 ## 🔗 Connect
 
-- **GitHub**: [sunbrolynk](https://github.com/sunbrolynk)
+- **GitHub**: [username](https://github.com/username)
 - **Issues**: Feel free to open issues for bugs, questions, or suggestions
 
 ## 📄 License
