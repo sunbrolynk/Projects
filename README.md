@@ -36,6 +36,7 @@ Utility scripts and automation tools
 Educational implementations and tutorial follow-alongs
  - [Webflyx](https://github.com/sunbrolynk/webflyx)
  - [BookBot](https://github.com/sunbrolynk/bookbot)
+ - [Asteroids](https://github.com/sunbrolynk/asteroids)
 
 ### Experimental
 Proof-of-concepts and technology exploration
